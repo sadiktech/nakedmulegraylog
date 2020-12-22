@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="ef4dca98-48f2-41d2-95b3-3e190b4de85e" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="namedmulegraylogFlow" doc:id="4f82a8bb-5800-43b9-8459-c6c04e5c0089" >
+		<http:listener doc:name="Listener" doc:id="8af84376-db25-4958-8066-ff386f103f81" config-ref="HTTP_Listener_config" path="/graylog"/>
+		<logger level="INFO" doc:name="Logger" doc:id="d85a53ee-fb05-47c9-8393-214adadac42d" message="---------------#[payload]"/>
+	</flow>
+</mule>
